@@ -1,3 +1,5 @@
+import { createOption, setFieldAttributes } from "./functions";
+
 const newProjectForm = document.createElement('form');
 
 const projectTitleField = document.createElement('input');
@@ -31,15 +33,3 @@ newTodoForm.append(
 );
 
 export {newProjectForm, newTodoForm};
-
-function createOption(valueAndText) {
-    const option = document.createElement('option');
-    option.setAttribute('value', valueAndText);
-    option.innerHTML = valueAndText;
-    return option;
-}
-function setFieldAttributes (element, type, idAndName) {
-    element.setAttribute('type', type);
-    element.setAttribute('id', idAndName);
-    element.setAttribute('name', idAndName);
-}
