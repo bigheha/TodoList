@@ -1,28 +1,20 @@
 const newProjectForm = document.createElement('form');
-
 const projectTitleField = document.createElement('input');
-projectTitleField.setAttribute('type', 'text');
-projectTitleField.setAttribute('id', 'projectTitle');
-projectTitleField.setAttribute('name', 'projectTitle');
+setAttributes(projectTitleField, 'text', 'projectTitle');
+
 const addProjectBtn = document.createElement('input');
 addProjectBtn.setAttribute('type', 'input');
-newProjectForm.appendChild(projectTitleField);
-newProjectForm.appendChild(addProjectBtn);
+
+newProjectForm.append(projectTitleField, addProjectBtn);
 
 const newTodoForm = document.createElement('form');
 
 const todoTitleField = document.createElement('input');
-todoTitleField.setAttribute('type', 'text');
-todoTitleField.setAttribute('id', 'todoTitle');
-todoTitleField.setAttribute('name', 'todoTitle');
+setAttributes(todoTitleField, 'text', 'todoTitle');
 const todoDescriptionField = document.createElement('input');
-todoDescriptionField.setAttribute('type', 'text');
-todoDescriptionField.setAttribute('id', 'todoDescription'),
-todoDescriptionField.setAttribute('name', 'todoDescription');
+setAttributes(todoDescriptionField, 'text', 'todoDescription');
 const todoDueDateField = document.createElement('input');
-todoDueDateField.setAttribute('type', 'date');
-todoDueDateField.setAttribute('id', 'todoDueDate');
-todoDueDateField.setAttribute('name', 'todoDueDate');
+setAttributes(todoDueDateField, 'date', 'todoDueDate');
 
 const todoPriorityField = document.createElement('select');
 todoPriorityField.setAttribute('id', 'todoPriority');
@@ -42,10 +34,18 @@ highPriority.setAttribute('value', 'high priority');
 highPriority.innerHTML = 'high priority'
 todoPriorityField.appendChild(highPriority);
 
-newTodoForm.appendChild(todoTitleField);
-newTodoForm.appendChild(todoDescriptionField);
-newTodoForm.appendChild(todoDueDateField);
-newTodoForm.appendChild(todoPriorityField);
+const addTodoBtn = document.createElement('input');
+addTodoBtn.setAttribute('type', 'submit');
+
+newTodoForm.append(
+    todoTitleField, todoDescriptionField, 
+    todoDueDateField, todoPriorityField, addTodoBtn
+);
 
 export {newProjectForm, newTodoForm};
 
+function setAttributes (element, type, idAndName) {
+    element.setAttribute('type', type);
+    element.setAttribute('id', idAndName);
+    element.setAttribute('name', idAndName);
+}
