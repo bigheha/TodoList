@@ -1,4 +1,4 @@
-
+import { newProjectForm, newTodoForm } from "./forms.js";
 
 export default function renderLayout() {
     const body = document.querySelector('body');
@@ -9,13 +9,37 @@ export default function renderLayout() {
 
     const header = document.createElement('div');
     header.classList.add('header');
+    const logo = document.createElement('h1');
+    logo.classList.add('logo');
+    logo.innerText= 'Todo planet';
+    header.appendChild(logo);
+
 
     const sidebar = document.createElement('div');
     sidebar.classList.add('sidebar');
+    const projectSpace = document.createElement('div');
+    projectSpace.setAttribute('id', 'projectSpace');
+    const showProjectFormBtn = document.createElement('button');
+    showProjectFormBtn.setAttribute('id', 'showProjectFormBtn');
+    showProjectFormBtn.innerText = 'New Project';
+    showProjectFormBtn.addEventListener('click', () => {
+        const newForm = document.querySelector('#newProjectForm'); //gets a newProjectForm element that is defined in forms.js
+        newForm.classList.toggle('hidden');
+        showProjectFormBtn.classList.toggle('hidden');
+    });
+    sidebar.append(projectSpace, newProjectForm, showProjectFormBtn);
 
     const content = document.createElement('div');
     content.classList.add('content');
-
+    const showTodoFormBtn = document.createElement('button');
+    showTodoFormBtn.setAttribute('id', 'newTodoBtn');
+    showTodoFormBtn.innerText = 'New Todo';
+    showTodoFormBtn.addEventListener('click', () => {
+        const newForm = document.querySelector('#newTodoForm'); //gets a newTodoForm element defined in forms.js
+        newForm.classList.toggle('hidden');
+        showTodoFormBtn.classList.toggle('hidden');
+    })
+    content.append(newTodoForm, showTodoFormBtn);
     const footer = document.createElement('div');
     footer.classList.add('footer');
 

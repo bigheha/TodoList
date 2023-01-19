@@ -9,5 +9,13 @@ function setFieldAttributes (element, type, idAndName) {
     element.setAttribute('id', idAndName);
     element.setAttribute('name', idAndName);
 }
-
-export {createOption, setFieldAttributes};
+function renderProjects (projects) {
+    const projectSpace = document.querySelector('#projectSpace');
+    projects.forEach(entry => {
+        const project = document.createElement('p');
+        project.innerHTML = entry.title;
+        project.classList.add('projectButton');
+        projectSpace.appendChild(project);
+    });
+}
+export {createOption, setFieldAttributes, renderProjects};

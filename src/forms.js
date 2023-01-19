@@ -1,16 +1,31 @@
 import { createOption, setFieldAttributes } from "./functions";
+import Project, {projects} from "./project.js";
+import { renderProjects } from "./functions";
 
+//new project form definition
 const newProjectForm = document.createElement('form');
+newProjectForm.setAttribute('id', 'newProjectForm');
 newProjectForm.classList.add('hidden');
 
 const projectTitleField = document.createElement('input');
 setFieldAttributes(projectTitleField, 'text', 'projectTitle');
 const addProjectBtn = document.createElement('input');
-addProjectBtn.setAttribute('type', 'input');
-addProjectBtn.addEventListener('click', () => newProjectForm.classList.add('hidden'));
+addProjectBtn.setAttribute('type', 'submit');
+newProjectForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const project = new Project(document.getElementById('projectTitle').value); 
+    projects.push(project);
+    renderProjects(projects);
+    const newForm = document.querySelector('#showProjectFormBtn'); //gets a button element that shows project form, defined in layout.js
+    newForm.classList.toggle('hidden');
+    newProjectForm.classList.toggle('hidden');
+    console.log(projects);
+});
 newProjectForm.append(projectTitleField, addProjectBtn);
 
+//new todo task form definition
 const newTodoForm = document.createElement('form');
+newTodoForm.setAttribute('id', 'newTodoForm');
 newTodoForm.classList.add('hidden');
 
 const todoTitleField = document.createElement('input');
@@ -29,7 +44,13 @@ todoPriorityField.append(lowPriority, regularPriority, highPriority);
 
 const addTodoBtn = document.createElement('input');
 addTodoBtn.setAttribute('type', 'submit');
-addTodoBtn.addEventListener('click', () => newTodoForm.classList.add('hidden'));
+newTodoForm.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newForm = document.querySelector('#newTodoBtn'); //gets a button element that shows todo form, defined in layout.js
+    newTodoForm.classList.toggle('hidden');
+    newForm.classList.toggle('hidden');
+});
+
 newTodoForm.append(
     todoTitleField, todoDescriptionField, 
     todoDueDateField, todoPriorityField, addTodoBtn

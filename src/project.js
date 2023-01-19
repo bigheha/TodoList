@@ -3,4 +3,7 @@ export default class Project {
         this.title = title;
         this.todolist = [];
     }
+    
 }
+
+export const projects = [];
