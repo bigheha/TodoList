@@ -29,6 +29,26 @@
     grid-column: 1/2;
     grid-row: 2/3;
     background-color: rgb(211, 75, 75);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sidebar {
+    color: wheat;
+}
+
+.projectButton {
+    display: flex;
+    color: wheat;
+    font-weight: 700;
+    padding-left: 30px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+
+#showProjectFormBtn {
+    align-self: center;
 }
 
 .content {

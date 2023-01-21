@@ -1,5 +1,5 @@
 import { createOption, setFieldAttributes } from "./functions";
-import Project, {projects} from "./project.js";
+import {Project, projects} from "./projects-logic.js";
 import { renderProjects } from "./functions";
 
 //new project form definition
@@ -9,6 +9,7 @@ newProjectForm.classList.add('hidden');
 
 const projectTitleField = document.createElement('input');
 setFieldAttributes(projectTitleField, 'text', 'projectTitle');
+
 const addProjectBtn = document.createElement('input');
 addProjectBtn.setAttribute('type', 'submit');
 newProjectForm.addEventListener('submit', (e) => {
@@ -19,7 +20,6 @@ newProjectForm.addEventListener('submit', (e) => {
     const newForm = document.querySelector('#showProjectFormBtn'); //gets a button element that shows project form, defined in layout.js
     newForm.classList.toggle('hidden');
     newProjectForm.classList.toggle('hidden');
-    console.log(projects);
 });
 newProjectForm.append(projectTitleField, addProjectBtn);
 
