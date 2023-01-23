@@ -34,6 +34,8 @@ export default function renderLayout() {
 
     const content = document.createElement('div');
     content.classList.add('content');
+    const contentSpace = document.createElement('div');
+    contentSpace.classList.add('todos-grid');
 
     const showTodoFormBtn = document.createElement('button');
     showTodoFormBtn.setAttribute('id', 'newTodoBtn');

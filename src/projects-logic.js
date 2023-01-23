@@ -13,10 +13,13 @@ export class Todo {
         this.priority = priority;
     }
 }
-export const projects = [
-    {
-        title: 'first project',
-        todolist: []
-    },
-];
+export const projectsHolder = {
+    list : [
+            {
+                title: 'first project',
+                todolist: []
+            },
+    ],
+    selectedProject: 0
+};
 
