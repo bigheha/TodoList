@@ -23,7 +23,7 @@ function renderTodos (id) {
     todos.forEach((todo, index) => {
         const todoCard = document.createElement('div');
         todoCard.classList.add('todo-card');
-        todoCard.setAttribute('data-number', 'index');
+        todoCard.setAttribute('data-number', index);
         
         const todoTitle = todo.title;
         const todoDescription = todo.description;

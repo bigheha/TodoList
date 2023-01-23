@@ -1,5 +1,5 @@
 import { createOption, setFieldAttributes } from "./functions";
-import {Project, projectsHolder} from "./projects-logic.js";
+import {Project,Todo, projectsHolder} from "./projects-logic.js";
 import { renderProjects } from "./functions";
 
 //new project form definition
@@ -18,8 +18,8 @@ newProjectForm.addEventListener('submit', (e) => {
     projectsHolder.list.push(project);
     renderProjects(projectsHolder.list);
     const newForm = document.querySelector('#showProjectFormBtn'); //gets a button element that shows project form, defined in layout.js
-    newForm.classList.toggle('hidden');
     newProjectForm.classList.toggle('hidden');
+    newForm.classList.toggle('hidden');
 });
 newProjectForm.append(projectTitleField, addProjectBtn);
 
@@ -46,7 +46,20 @@ const addTodoBtn = document.createElement('input');
 addTodoBtn.setAttribute('type', 'submit');
 newTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    
+    const todo = new Todo(
+        document.getElementById('todoTitle').value,
+        document.getElementById('todoDescription').value,
+        document.getElementById('todoDueDate').value,
+        document.getElementById('todoPriority').value
+    );
+
+    const index = projectsHolder.selectedProject;
+    const selectedProject = projectsHolder.list[index];
+    selectedProject.todolist.push(todo);
+
     const newForm = document.querySelector('#newTodoBtn'); //gets a button element that shows todo form, defined in layout.js
+    
     newTodoForm.classList.toggle('hidden');
     newForm.classList.toggle('hidden');
 });

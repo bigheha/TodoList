@@ -3,7 +3,6 @@ export class Project {
         this.title = title;
         this.todolist = [];
     }
-    
 }
 export class Todo {
     constructor (title, description, duedate, priority) {
