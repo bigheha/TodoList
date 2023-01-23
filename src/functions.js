@@ -1,4 +1,5 @@
 import { projectsHolder } from "./projects-logic";
+import { showTodoFormBtn } from "./forms";
 
 function createOption(valueAndText) {
     const option = document.createElement('option');
@@ -14,26 +15,48 @@ function setFieldAttributes (element, type, idAndName) {
     element.setAttribute('required', '');
 }
 
+function createDeleteTodoBtn() {
+    const button = document.createElement('button');
+
+    button.innerHTML = 'delete';
+    button.addEventListener('click', (e) => {
+        const index = e.target.parentElement.getAttribute('data-number');
+        const selectedProject = projectsHolder.list[projectsHolder.selectedProject];
+        selectedProject.todolist.splice(index, 1);
+        renderTodos(projectsHolder.selectedProject);
+    })
+
+    return button;
+}
+
 function renderTodos (id) {
     const todoSpace = document.querySelector('.todos-grid');
     
     const targetProject = projectsHolder.list[id];
     const todos = targetProject.todolist;
 
+    while(todoSpace.firstChild) {
+        todoSpace.removeChild(todoSpace.firstChild);
+    }
     todos.forEach((todo, index) => {
         const todoCard = document.createElement('div');
         todoCard.classList.add('todo-card');
         todoCard.setAttribute('data-number', index);
         
-        const todoTitle = todo.title;
-        const todoDescription = todo.description;
-        const duedate = todo.duedate;
-        const priority = todo.priority;
-
-        todoCard.append(todoTitle, todoDescription, duedate, priority);
+        const todoTitle = document.createElement('p');
+        todoTitle.innerHTML = todo.title;
+        const todoDescription = document.createElement('p');
+        todoDescription.innerHTML = todo.description;
+        const duedate = document.createElement('p');
+        duedate.innerHTML = todo.duedate;
+        const priority = document.createElement('p');
+        priority.innerHTML = todo.priority;
+        const deleteButton = createDeleteTodoBtn();
+        todoCard.append(todoTitle, todoDescription, duedate, priority, deleteButton);
 
         todoSpace.appendChild(todoCard);
     })
+    todoSpace.appendChild(showTodoFormBtn);
 
 }
 
@@ -81,6 +104,7 @@ function renderProjects (projectslist) {
         project.appendChild(deleteButton);
     });
     AddTodoRendering();
+    renderTodos(projectsHolder.selectedProject);
 }
 
 export {createOption, setFieldAttributes, renderProjects, renderTodos};

@@ -11,7 +11,7 @@
 .grid-container {
     display: grid;
     grid-template-rows: 10vh 80vh 10vh;
-    grid-template-columns: 25vw 75vw;
+    grid-template-columns: 20vw 80vw;
 }
 
 .header {
@@ -26,6 +26,7 @@
 }
 
 .sidebar {
+    color: wheat;
     grid-column: 1/2;
     grid-row: 2/3;
     background-color: rgb(211, 75, 75);
@@ -34,17 +35,21 @@
 
 }
 
-.sidebar {
-    color: wheat;
+#newProjectForm {
+    align-self: center;
 }
 
 .projectButton {
     display: flex;
     color: wheat;
     font-weight: 700;
-    padding-left: 30px;
-    padding-right: 20px;
+    padding: 10px 20px 10px 30px;
+    margin: 0;
+
     justify-content: space-between;
+}
+.projectButton:hover {
+    background-color: rgb(185, 65, 65);
 }
 
 #showProjectFormBtn {
@@ -59,14 +64,18 @@
 
 .todos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
-    grid-auto-rows: 200px;
+    grid-template-columns: repeat(auto-fit, 240px);
+    grid-auto-rows: 240px;
     gap: 10px;
+    margin: 10px;
 }
 
 .todo-card {
+    display: flex;
     background-color: white;
     border-radius: 10px;
+    flex-direction: column;
+    padding: 0px 10px;
 }
 
 .footer {

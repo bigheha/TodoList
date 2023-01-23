@@ -1,4 +1,4 @@
-import { newProjectForm, newTodoForm } from "./forms.js";
+import { newProjectForm, newTodoForm,showTodoFormBtn } from "./forms.js";
 
 export default function renderLayout() {
     const body = document.querySelector('body');
@@ -34,19 +34,13 @@ export default function renderLayout() {
 
     const content = document.createElement('div');
     content.classList.add('content');
+    
     const contentSpace = document.createElement('div');
     contentSpace.classList.add('todos-grid');
 
-    const showTodoFormBtn = document.createElement('button');
-    showTodoFormBtn.setAttribute('id', 'newTodoBtn');
-    showTodoFormBtn.innerText = 'New Todo';
-    showTodoFormBtn.addEventListener('click', () => {
-        const newForm = document.querySelector('#newTodoForm'); //gets a newTodoForm element defined in forms.js
-        newForm.classList.toggle('hidden');
-        showTodoFormBtn.classList.toggle('hidden');
-    })
+    content.appendChild(contentSpace);
 
-    content.append(newTodoForm, showTodoFormBtn);
+    content.append(newTodoForm);
 
     const footer = document.createElement('div');
     footer.classList.add('footer');

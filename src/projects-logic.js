@@ -16,7 +16,14 @@ export const projectsHolder = {
     list : [
             {
                 title: 'first project',
-                todolist: []
+                todolist: [
+                    {
+                        title: 'title 1',
+                        description: 'description',
+                        date: 'date',
+                        priority: 'low priority'
+                    }
+                ]
             },
     ],
     selectedProject: 0
