@@ -8,6 +8,7 @@ newProjectForm.setAttribute('id', 'newProjectForm');
 newProjectForm.classList.add('hidden');
 
 const projectTitleField = document.createElement('input');
+projectTitleField.setAttribute('placeholder', 'Project title');
 setFieldAttributes(projectTitleField, 'text', 'projectTitle');
 
 const addProjectBtn = document.createElement('input');
@@ -29,8 +30,10 @@ newTodoForm.setAttribute('id', 'newTodoForm');
 newTodoForm.classList.add('hidden');
 
 const todoTitleField = document.createElement('input');
+todoTitleField.setAttribute('placeholder', 'Todo totle');
 setFieldAttributes(todoTitleField, 'text', 'todoTitle');
 const todoDescriptionField = document.createElement('input');
+todoDescriptionField.setAttribute('placeholder', 'Todo description');
 setFieldAttributes(todoDescriptionField, 'text', 'todoDescription');
 const todoDueDateField = document.createElement('input');
 setFieldAttributes(todoDueDateField, 'date', 'todoDueDate');
@@ -61,7 +64,8 @@ newTodoForm.addEventListener('submit', (e) => {
     renderTodos(index);
     
     const newForm = document.querySelector('#newTodoBtn'); //gets a button element that shows todo form, defined in layout.js
-    newTodoForm.classList.toggle('hidden');
+    newTodoForm.classList.remove('flex');
+    newTodoForm.classList.add('hidden');
     newForm.classList.toggle('hidden');
 });
 
@@ -75,7 +79,8 @@ showTodoFormBtn.setAttribute('id', 'newTodoBtn');
 showTodoFormBtn.innerText = 'New Todo';
 showTodoFormBtn.addEventListener('click', () => {
     const newForm = document.querySelector('#newTodoForm'); //gets a newTodoForm element defined in forms.js
-    newForm.classList.toggle('hidden');
+    newForm.classList.remove('hidden');
+    newForm.classList.add('flex');
     showTodoFormBtn.classList.toggle('hidden');
 })
 

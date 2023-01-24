@@ -40,8 +40,6 @@ export default function renderLayout() {
 
     content.appendChild(contentSpace);
 
-    content.append(newTodoForm);
-
     const footer = document.createElement('div');
     footer.classList.add('footer');
 

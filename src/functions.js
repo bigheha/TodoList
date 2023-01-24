@@ -1,5 +1,5 @@
 import { projectsHolder } from "./projects-logic";
-import { showTodoFormBtn } from "./forms";
+import { showTodoFormBtn, newTodoForm } from "./forms";
 
 function createOption(valueAndText) {
     const option = document.createElement('option');
@@ -57,7 +57,7 @@ function renderTodos (id) {
         todoSpace.appendChild(todoCard);
     })
     todoSpace.appendChild(showTodoFormBtn);
-
+    todoSpace.appendChild(newTodoForm);
 }
 
 //non-exported function, used to add delete button to a project tab (line 41)
